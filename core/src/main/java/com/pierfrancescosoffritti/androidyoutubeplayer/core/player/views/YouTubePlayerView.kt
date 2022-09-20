@@ -96,6 +96,16 @@ class YouTubePlayerView(context: Context, attrs: AttributeSet? = null, defStyleA
                 fullScreenHelper.exitFullScreen()
             }
         })
+        
+        legacyTubePlayerView.addQualityListener(object : YouTubePlayerQualityListener {
+            override fun onYouTubePlayerQualityChange() {
+                fullScreenHelper.enterFullScreen()
+            }
+
+            override fun onYouTubePlayerAutomateQuality() {
+                fullScreenHelper.exitFullScreen()
+            }
+        })
     }
 
     /**
