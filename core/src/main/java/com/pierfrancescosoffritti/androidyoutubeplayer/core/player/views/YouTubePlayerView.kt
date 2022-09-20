@@ -101,8 +101,8 @@ class YouTubePlayerView(context: Context, attrs: AttributeSet? = null, defStyleA
         })
         
         legacyTubePlayerView.addQualityListener(object : YouTubePlayerQualityListener {
-            override fun onYouTubePlayerChangeQuality(playbackQuality: String) {
-                qualityHelper.changeQuality(playbackQuality)
+            override fun onYouTubePlayerChangeQuality(quality: String) {
+                qualityHelper.changeQuality(quality)
             }
 
             override fun onYouTubePlayerAutomateQuality() {
