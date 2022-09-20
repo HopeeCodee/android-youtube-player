@@ -23,7 +23,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.views.YouTubePlay
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.views.YouTubePlayerSeekBarListener
 import androidx.core.content.ContextCompat
 
-internal class DefaultPlayerUiController(private val youTubePlayerView: LegacyYouTubePlayerView, private val youTubePlayer: YouTubePlayer) : PlayerUiController, YouTubePlayerListener, YouTubePlayerFullScreenListener, YouTubePlayerSeekBarListener {
+internal class DefaultPlayerUiController(private val youTubePlayerView: LegacyYouTubePlayerView, private val youTubePlayer: YouTubePlayer) : PlayerUiController, YouTubePlayerListener, YouTubePlayerQualityListener, YouTubePlayerFullScreenListener, YouTubePlayerSeekBarListener {
 
     private var youTubePlayerMenu: YouTubePlayerMenu
 
@@ -227,6 +227,12 @@ internal class DefaultPlayerUiController(private val youTubePlayerView: LegacyYo
 
     override fun onYouTubePlayerExitFullScreen() =
         fullScreenButton.setImageResource(R.drawable.ayp_ic_fullscreen_24dp)
+        
+    override fun onYouTubePlayerChangeQuality(quality: String) =
+        return
+
+    override fun onYouTubePlayerAutomateQuality() =
+        return
 
     private fun updateState(state: PlayerConstants.PlayerState) {
         when (state) {
