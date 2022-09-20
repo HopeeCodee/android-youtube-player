@@ -31,7 +31,7 @@ class YouTubePlayerView(context: Context, attrs: AttributeSet? = null, defStyleA
 
     private val legacyTubePlayerView: LegacyYouTubePlayerView = LegacyYouTubePlayerView(context)
     private val fullScreenHelper = FullScreenHelper(this)
-    private val qualityHelper = QualityHelper(this)
+    private val qualityHelper = QualityHelper()
 
     var enableAutomaticInitialization: Boolean
 
