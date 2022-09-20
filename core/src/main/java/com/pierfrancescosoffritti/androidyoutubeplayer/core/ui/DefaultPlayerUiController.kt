@@ -229,10 +229,10 @@ internal class DefaultPlayerUiController(private val youTubePlayerView: LegacyYo
         fullScreenButton.setImageResource(R.drawable.ayp_ic_fullscreen_24dp)
         
     override fun onYouTubePlayerChangeQuality(quality: String) =
-        return
+        fullScreenButton.setImageResource(R.drawable.ayp_ic_fullscreen_exit_24dp)
 
     override fun onYouTubePlayerAutomateQuality() =
-        return
+        fullScreenButton.setImageResource(R.drawable.ayp_ic_fullscreen_24dp)
 
     private fun updateState(state: PlayerConstants.PlayerState) {
         when (state) {
