@@ -1,58 +1,31 @@
 package com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils
 
-import android.view.View
-import android.view.ViewGroup
-
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerQualityListener
 
 import java.util.HashSet
 
-internal class QualityHelper(private val targetView: View) {
+internal class QualityHelper() {
 
-    var isFullScreen: Boolean = false
+    var quality: String = "auto"
         private set
 
-    private val fullScreenListeners: MutableSet<YouTubePlayerFullScreenListener> = HashSet()
+    private val qualityListeners: MutableSet<YouTubePlayerQualityListener> = HashSet()
 
-    fun enterFullScreen() {
-        if (isFullScreen) return
-
-        isFullScreen = true
-
-        val viewParams = targetView.layoutParams
-        viewParams.height = ViewGroup.LayoutParams.MATCH_PARENT
-        viewParams.width = ViewGroup.LayoutParams.MATCH_PARENT
-        targetView.layoutParams = viewParams
-
-        for (fullScreenListener in fullScreenListeners)
-            fullScreenListener.onYouTubePlayerEnterFullScreen()
+    fun changeQuality(playbackQuality: String) {
+        
+        quality = playbackQuality
+        
+        for (qualityListener in qualityListeners)
+            qualityListener.onYouTubePlayerChangeQuality(quality)
     }
 
-    fun exitFullScreen() {
-        if (!isFullScreen) return
+    fun automateQuality() {
+        if (quality == "auto") return
 
-        isFullScreen = false
+        quality = "auto"
 
-        val viewParams = targetView.layoutParams
-        viewParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
-        viewParams.width = ViewGroup.LayoutParams.MATCH_PARENT
-        targetView.layoutParams = viewParams
-
-        for (fullScreenListener in fullScreenListeners)
-            fullScreenListener.onYouTubePlayerExitFullScreen()
-    }
-
-    fun toggleFullScreen() {
-        if (isFullScreen) exitFullScreen()
-        else enterFullScreen()
-    }
-
-    fun addFullScreenListener(fullScreenListener: YouTubePlayerFullScreenListener): Boolean {
-        return fullScreenListeners.add(fullScreenListener)
-    }
-
-    fun removeFullScreenListener(fullScreenListener: YouTubePlayerFullScreenListener): Boolean {
-        return fullScreenListeners.remove(fullScreenListener)
+        for (qualityListener in qualityListeners)
+            qualityListener.onYouTubePlayerAutomateQuality()
     }
     
     fun addQualityListener(qualityListener: YouTubePlayerQualityListener): Boolean {
