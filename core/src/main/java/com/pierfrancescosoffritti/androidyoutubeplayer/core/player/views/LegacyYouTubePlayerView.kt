@@ -206,7 +206,7 @@ internal class LegacyYouTubePlayerView(context: Context, attrs: AttributeSet? = 
 
     fun exitFullScreen() = fullScreenHelper.exitFullScreen()
     
-    fun changeQuality() = qualityHelper.changeQuality(quality: String)
+    fun changeQuality(quality: String) = qualityHelper.changeQuality(quality)
 
     fun automateQuality() = qualityHelper.automateQuality()
 
