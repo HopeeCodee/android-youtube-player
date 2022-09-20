@@ -65,6 +65,10 @@ internal class WebViewYouTubePlayer constructor(context: Context, attrs: Attribu
 
         mainThreadHandler.post { loadUrl("javascript:setVolume($volumePercent)") }
     }
+    
+    override fun setQuality(playbackQuality: String) {
+        mainThreadHandler.post { loadUrl("javascript:setQuality($playbackQuality)") }
+    }
 
     override fun seekTo(time: Float) {
         mainThreadHandler.post { loadUrl("javascript:seekTo($time)") }
