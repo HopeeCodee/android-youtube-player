@@ -86,7 +86,7 @@ internal class DefaultPlayerUiController(private val youTubePlayerView: LegacyYo
 
         fadeControlsContainer = FadeViewHelper(controlsContainer)
 
-        onFullScreenButtonListener = View.OnClickListener { /**youTubePlayerView.toggleFullScreen()**/ youtubePlayerView.changeQuality("small") }
+        onFullScreenButtonListener = View.OnClickListener { /**youTubePlayerView.toggleFullScreen()**/ youTubePlayerView.changeQuality("small") }
         onMenuButtonClickListener = View.OnClickListener { youTubePlayerMenu.show(menuButton) }
 
         initClickListeners()
