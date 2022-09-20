@@ -13,6 +13,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.R
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerFullScreenListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerQualityListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.LegacyYouTubePlayerView
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.menu.YouTubePlayerMenu
@@ -85,7 +86,7 @@ internal class DefaultPlayerUiController(private val youTubePlayerView: LegacyYo
 
         fadeControlsContainer = FadeViewHelper(controlsContainer)
 
-        onFullScreenButtonListener = View.OnClickListener { youTubePlayerView.toggleFullScreen() }
+        onFullScreenButtonListener = View.OnClickListener { /**youTubePlayerView.toggleFullScreen()**/ youtubePlayerView.changeQuality("small") }
         onMenuButtonClickListener = View.OnClickListener { youTubePlayerMenu.show(menuButton) }
 
         initClickListeners()
