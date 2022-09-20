@@ -38,6 +38,7 @@ internal class LegacyYouTubePlayerView(context: Context, attrs: AttributeSet? = 
     private val networkListener = NetworkListener()
     private val playbackResumer = PlaybackResumer()
     private val fullScreenHelper = FullScreenHelper(this)
+    private val qualityHelper = QualityHelper()
 
     internal var isYouTubePlayerReady = false
     private var initialize = { }
