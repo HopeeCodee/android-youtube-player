@@ -55,6 +55,7 @@ internal class LegacyYouTubePlayerView(context: Context, attrs: AttributeSet? = 
         defaultPlayerUiController = DefaultPlayerUiController(this, youTubePlayer)
 
         fullScreenHelper.addFullScreenListener(defaultPlayerUiController)
+        qualityHelper.addQualityListener(defaultPlayerUiController)
 
         youTubePlayer.addListener(defaultPlayerUiController)
         youTubePlayer.addListener(playbackResumer)
