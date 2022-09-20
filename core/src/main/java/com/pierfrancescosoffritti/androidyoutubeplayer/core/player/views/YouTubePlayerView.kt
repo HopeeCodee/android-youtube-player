@@ -13,8 +13,8 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.R
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerCallback
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerFullScreenListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerQualityListener       /** **/
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerFullScreenListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.FullScreenHelper
@@ -101,12 +101,12 @@ class YouTubePlayerView(context: Context, attrs: AttributeSet? = null, defStyleA
         })
         
         legacyTubePlayerView.addQualityListener(object : YouTubePlayerQualityListener {
-            override fun onYouTubePlayerQualityChange() {
-                fullScreenHelper.enterFullScreen()
+            override fun onYouTubePlayerChangeQuality(playbackQuality: String) {
+                qualityHelper.changeQuality(playbackQuality)
             }
 
             override fun onYouTubePlayerAutomateQuality() {
-                fullScreenHelper.exitFullScreen()
+                qualityHelper.automateQuality()
             }
         })
     }
@@ -219,5 +219,5 @@ class YouTubePlayerView(context: Context, attrs: AttributeSet? = null, defStyleA
             fullScreenHelper.removeFullScreenListener(fullScreenListener)
             
     fun addQualityListener(qualityListener: YouTubePlayerQualityListener): Boolean =
-            qualityHelper.addQualityListener(qualityListener)        
+            qualityHelper.addQualityListener(qualityListener)   
 }
