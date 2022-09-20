@@ -213,4 +213,7 @@ internal class LegacyYouTubePlayerView(context: Context, attrs: AttributeSet? = 
 
     fun removeFullScreenListener(fullScreenListener: YouTubePlayerFullScreenListener): Boolean =
             fullScreenHelper.removeFullScreenListener(fullScreenListener)
+            
+    fun addQualityListener(qualityListener: YouTubePlayerQualityListener): Boolean =
+            qualityHelper.addQualityListener(qualityListener)        
 }
