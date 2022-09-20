@@ -204,7 +204,7 @@ class YouTubePlayerView(context: Context, attrs: AttributeSet? = null, defStyleA
 
     fun exitFullScreen() = legacyTubePlayerView.exitFullScreen()
     
-    fun changeQuality() = qualityHelper.changeQuality(quality: String)
+    fun changeQuality(quality: String) = qualityHelper.changeQuality(quality)
 
     fun automateQuality() = qualityHelper.automateQuality()
 
