@@ -208,7 +208,9 @@ internal class LegacyYouTubePlayerView(context: Context, attrs: AttributeSet? = 
 
     fun exitFullScreen() = fullScreenHelper.exitFullScreen()
     
-    fun changeQuality(quality: String) = this.youtubePlayer.isBackgroundPlaybackEnabled = enable
+    fun changeQuality(quality: String){
+        youTubePlayer.pause()
+    } 
 
     fun automateQuality() = qualityHelper.automateQuality()
 
