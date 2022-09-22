@@ -1,24 +1,7 @@
 package com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils
 
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerQualityListener
-import android.annotation.SuppressLint
-import android.content.Context
-import android.graphics.Bitmap
-import android.os.Handler
-import android.os.Looper
-import android.util.AttributeSet
-import android.view.View
-import android.webkit.WebChromeClient
-import android.webkit.WebSettings
-import android.webkit.WebView
 import java.util.HashSet
-
-import com.pierfrancescosoffritti.androidyoutubeplayer.R
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayerBridge
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.Utils
 import java.util.Collections
 
 internal class QualityHelper() {
@@ -33,9 +16,7 @@ internal class QualityHelper() {
     fun changeQuality(playbackQuality: String) {
         
         quality = playbackQuality
-        
-        mainThreadHandler.post { loadUrl("javascript:setQuality($quality)") }
-        
+                
         for (qualityListener in qualityListeners)
             qualityListener.onYouTubePlayerChangeQuality(quality)
     }
@@ -45,8 +26,6 @@ internal class QualityHelper() {
 
         quality = "auto"
         
-        mainThreadHandler.post { loadUrl("javascript:setQuality($quality)") }
-
         for (qualityListener in qualityListeners)
             qualityListener.onYouTubePlayerAutomateQuality()
     }
