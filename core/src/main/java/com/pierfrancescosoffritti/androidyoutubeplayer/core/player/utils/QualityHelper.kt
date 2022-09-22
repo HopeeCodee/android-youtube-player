@@ -4,18 +4,43 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.You
 import java.util.HashSet
 import java.util.Collections
 
-internal class QualityHelper() {
+import android.content.Context
+import android.content.IntentFilter
+import android.net.ConnectivityManager
+import android.util.AttributeSet
+import android.view.View
+import android.view.ViewGroup
+import android.widget.FrameLayout
+import androidx.annotation.LayoutRes
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.OnLifecycleEvent
+import com.pierfrancescosoffritti.androidyoutubeplayer.R
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerFullScreenListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerQualityListener       /** **/
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerCallback
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.FullScreenHelper
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.QualityHelper                          /** **/
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.PlaybackResumer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.DefaultPlayerUiController
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.PlayerUiController
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.NetworkListener
+
+internal class QualityHelper(private val player: WebViewYoutubePlayer) {
 
     var quality: String = "auto"
         private set
 
     private val qualityListeners: MutableSet<YouTubePlayerQualityListener> = HashSet()
-    
-    private val mainThreadHandler: Handler = Handler(Looper.getMainLooper())
-    
+        
     fun changeQuality(playbackQuality: String) {
         
         quality = playbackQuality
+        player.setQuality(quality)
                 
         for (qualityListener in qualityListeners)
             qualityListener.onYouTubePlayerChangeQuality(quality)
@@ -25,6 +50,7 @@ internal class QualityHelper() {
         if (quality == "auto") return
 
         quality = "auto"
+        player.setQuality(quality)
         
         for (qualityListener in qualityListeners)
             qualityListener.onYouTubePlayerAutomateQuality()
