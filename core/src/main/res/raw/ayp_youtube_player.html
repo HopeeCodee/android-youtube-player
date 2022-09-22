@@ -141,11 +141,11 @@
         }
             
         function setQuality(playbackQuality) {
-            player.pauseVideo();
             setPlaybackQuality(playbackQuality);
         }
             
         function setPlaybackQuality(playbackQuality) {
+            player.pause();
             if (playbackQuality == "auto") {
                 //this will make quality auto
                 localStorage.removeItem("yt-player-quality");
