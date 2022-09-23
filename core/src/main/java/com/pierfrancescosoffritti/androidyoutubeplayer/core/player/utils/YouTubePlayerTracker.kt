@@ -40,7 +40,7 @@ class YouTubePlayerTracker : AbstractYouTubePlayerListener() {
     }
     
     override fun onVideoQualities(youTubePlayer: YouTubePlayer, qualityOptions: String) { 
-        this.videoQualities = qualityOptions
+        videoQualities = qualityOptions
     }
    
 }
