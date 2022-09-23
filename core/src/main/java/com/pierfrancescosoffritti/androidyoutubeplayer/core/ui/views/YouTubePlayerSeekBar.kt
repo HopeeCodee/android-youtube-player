@@ -132,7 +132,7 @@ class YouTubePlayerSeekBar(context: Context, attrs: AttributeSet? = null): Linea
         seekBar.progress = second.toInt()
     }
 
-    override fun onVideoDuration(youTubePlayer: YouTubePlayer, duration: Float) {
+    override fun onVideoDuration(youTubePlayer: YouTubePlayer, duration: Float, qualityOptions: String) {
         videoDurationTextView.text = TimeUtilities.formatTime(duration)
         seekBar.max = duration.toInt()
     }
@@ -146,7 +146,6 @@ class YouTubePlayerSeekBar(context: Context, attrs: AttributeSet? = null): Linea
 
     override fun onReady(youTubePlayer: YouTubePlayer) { }
     override fun onVideoId(youTubePlayer: YouTubePlayer, videoId: String) { }
-    override fun onVideoQualities(youTubePlayer: YouTubePlayer, qualityOptions: String) { }
     override fun onApiChange(youTubePlayer: YouTubePlayer) { }
     override fun onPlaybackQualityChange(youTubePlayer: YouTubePlayer, playbackQuality: PlayerConstants.PlaybackQuality) { }
     override fun onPlaybackRateChange(youTubePlayer: YouTubePlayer, playbackRate: PlayerConstants.PlaybackRate) { }
