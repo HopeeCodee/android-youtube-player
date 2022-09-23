@@ -150,11 +150,11 @@ class YouTubePlayerBridge(private val youTubePlayerOwner: YouTubePlayerBridgeCal
     
     @JavascriptInterface
     fun sendVideoAvailableQualities(qualities: String) {
-        val qualities: String
-        
+        val aqualities: String
+        aqualities = qualities
         mainThreadHandler.post {
             for (listener in youTubePlayerOwner.getListeners())
-                listener.onAvailableQualities(youTubePlayerOwner.getInstance(), qualities)
+                listener.onAvailableQualities(youTubePlayerOwner.getInstance(), aqualities)
         }
     }
 
