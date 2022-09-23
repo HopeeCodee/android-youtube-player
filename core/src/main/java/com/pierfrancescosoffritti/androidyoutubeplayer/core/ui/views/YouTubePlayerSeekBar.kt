@@ -132,7 +132,7 @@ class YouTubePlayerSeekBar(context: Context, attrs: AttributeSet? = null): Linea
         seekBar.progress = second.toInt()
     }
 
-    override fun onVideoDuration(youTubePlayer: YouTubePlayer, duration: Float, qualityOptions: String) {
+    override fun onVideoDuration(youTubePlayer: YouTubePlayer, duration: Float) {
         videoDurationTextView.text = TimeUtilities.formatTime(duration)
         seekBar.max = duration.toInt()
     }
