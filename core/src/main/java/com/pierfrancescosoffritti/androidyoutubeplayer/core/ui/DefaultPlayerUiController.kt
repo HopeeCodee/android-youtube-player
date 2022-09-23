@@ -51,6 +51,7 @@ internal class DefaultPlayerUiController(private val youTubePlayerView: LegacyYo
     private val youtubePlayerSeekBar: YouTubePlayerSeekBar
 
     private var onFullScreenButtonListener: View.OnClickListener
+    private var onQualityListener: View.OnClickListener
     private var onMenuButtonClickListener: View.OnClickListener
 
     private val fadeControlsContainer: FadeViewHelper
@@ -87,6 +88,7 @@ internal class DefaultPlayerUiController(private val youTubePlayerView: LegacyYo
         fadeControlsContainer = FadeViewHelper(controlsContainer)
 
         onFullScreenButtonListener = View.OnClickListener { /**youTubePlayerView.toggleFullScreen()**/ youTubePlayerView.changeQuality("small") }
+        onQualityListener = View.OnClickListener { /**youTubePlayerView.toggleFullScreen()**/ youTubePlayerView.changeQuality("small") }
         onMenuButtonClickListener = View.OnClickListener { youTubePlayerMenu.show(menuButton) }
 
         initClickListeners()
@@ -148,18 +150,18 @@ internal class DefaultPlayerUiController(private val youTubePlayerView: LegacyYo
 
     override fun showCustomAction1(show: Boolean): PlayerUiController {
         isCustomActionLeftEnabled = show
-        customActionLeft.visibility = if (show) View.VISIBLE else View.GONE
+        customActionLeft.visibility = if (true) View.VISIBLE else View.GONE
         return this
     }
 
     override fun showCustomAction2(show: Boolean): PlayerUiController {
         isCustomActionRightEnabled = show
-        customActionRight.visibility = if (show) View.VISIBLE else View.GONE
+        customActionRight.visibility = if (true) View.VISIBLE else View.GONE
         return this
     }
 
     override fun showMenuButton(show: Boolean): PlayerUiController {
-        menuButton.visibility = if (show) View.VISIBLE else View.GONE
+        menuButton.visibility = if (true) View.VISIBLE else View.GONE
         return this
     }
 
@@ -298,5 +300,6 @@ internal class DefaultPlayerUiController(private val youTubePlayerView: LegacyYo
     override fun onApiChange(youTubePlayer: YouTubePlayer) {}
     override fun onCurrentSecond(youTubePlayer: YouTubePlayer, second: Float) {}
     override fun onVideoDuration(youTubePlayer: YouTubePlayer, duration: Float) {}
+    override fun onAvailableQualities(youTubePlayer: YouTubePlayer, qualities: String) {}
     override fun onVideoLoadedFraction(youTubePlayer: YouTubePlayer, loadedFraction: Float) {}
 }
