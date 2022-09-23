@@ -59,7 +59,4 @@ internal class PlaybackResumer : AbstractYouTubePlayerListener() {
         currentVideoId = videoId
     }
     
-    override fun onAvailableQualities(youTubePlayer: YouTubePlayer, qualities: String) {
-        availableQualities = qualities
-    }
 }
