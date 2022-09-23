@@ -132,11 +132,11 @@ class YouTubePlayerBridge(private val youTubePlayerOwner: YouTubePlayerBridgeCal
     }
 
     @JavascriptInterface
-    fun sendVideoQualities(quality: String) {
+    fun sendVideoDuration(qualities: String) {
 
         mainThreadHandler.post {
             for (listener in youTubePlayerOwner.getListeners())
-                listener.onVideoDuration(youTubePlayerOwner.getInstance(), quality)
+                listener.onVideoDuration(youTubePlayerOwner.getInstance(), qualities)
         }
     }
     
