@@ -29,7 +29,7 @@ class YouTubePlayerTracker : AbstractYouTubePlayerListener() {
         currentSecond = second
     }
 
-    override fun onVideoDuration(youTubePlayer: YouTubePlayer, duration: Float) {
+    override fun onVideoDuration(youTubePlayer: YouTubePlayer, duration: String) {
         videoDuration = duration
     }
 
