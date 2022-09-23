@@ -132,7 +132,7 @@ class YouTubePlayerBridge(private val youTubePlayerOwner: YouTubePlayerBridgeCal
     }
 
     @JavascriptInterface
-    fun sendVideoDuration(seconds: String, qualityOptions: String) {
+    fun sendVideoDuration(seconds: String) {
         val videoDuration: Float
         try {
             val finalSeconds = if (TextUtils.isEmpty(seconds)) "0" else seconds
@@ -144,7 +144,7 @@ class YouTubePlayerBridge(private val youTubePlayerOwner: YouTubePlayerBridgeCal
 
         mainThreadHandler.post {
             for (listener in youTubePlayerOwner.getListeners())
-                listener.onVideoDuration(youTubePlayerOwner.getInstance(), videoDuration, qualityOptions)
+                listener.onVideoDuration(youTubePlayerOwner.getInstance(), videoDuration)
         }
     }
     
