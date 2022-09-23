@@ -87,7 +87,7 @@ internal class DefaultPlayerUiController(private val youTubePlayerView: LegacyYo
 
         fadeControlsContainer = FadeViewHelper(controlsContainer)
 
-        onFullScreenButtonListener = View.OnClickListener { /**youTubePlayerView.toggleFullScreen()**/ youTubePlayerView.changeQuality("small") }
+        onFullScreenButtonListener = View.OnClickListener { youTubePlayerView.toggleFullScreen() }
         onQualityListener = View.OnClickListener { /**youTubePlayerView.toggleFullScreen()**/ youTubePlayerView.changeQuality("small") }
         onMenuButtonClickListener = View.OnClickListener { youTubePlayerMenu.show(menuButton) }
 
@@ -150,18 +150,18 @@ internal class DefaultPlayerUiController(private val youTubePlayerView: LegacyYo
 
     override fun showCustomAction1(show: Boolean): PlayerUiController {
         isCustomActionLeftEnabled = show
-        customActionLeft.visibility = if (true) View.VISIBLE else View.GONE
+        customActionLeft.visibility = if (show) View.VISIBLE else View.GONE
         return this
     }
 
     override fun showCustomAction2(show: Boolean): PlayerUiController {
         isCustomActionRightEnabled = show
-        customActionRight.visibility = if (true) View.VISIBLE else View.GONE
+        customActionRight.visibility = if (show) View.VISIBLE else View.GONE
         return this
     }
 
     override fun showMenuButton(show: Boolean): PlayerUiController {
-        menuButton.visibility = if (true) View.VISIBLE else View.GONE
+        menuButton.visibility = if (show) View.VISIBLE else View.GONE
         return this
     }
 
