@@ -147,6 +147,16 @@ class YouTubePlayerBridge(private val youTubePlayerOwner: YouTubePlayerBridgeCal
                 listener.onVideoDuration(youTubePlayerOwner.getInstance(), videoDuration)
         }
     }
+    
+    @JavascriptInterface
+    fun sendVideoAvailableQualities(qualities: String) {
+        val qualities: String
+        
+        mainThreadHandler.post {
+            for (listener in youTubePlayerOwner.getListeners())
+                listener.onAvailableQualities(youTubePlayerOwner.getInstance(), qualities)
+        }
+    }
 
     @JavascriptInterface
     fun sendVideoLoadedFraction(fraction: String) {
