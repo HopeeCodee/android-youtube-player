@@ -20,8 +20,7 @@ class YouTubePlayerTracker : AbstractYouTubePlayerListener() {
         private set
     var videoId: String? = null
         private set
-    var videoQualities: String? = null
-        private set
+
 
     override fun onStateChange(youTubePlayer: YouTubePlayer, state: PlayerConstants.PlayerState) {
         this.state = state
@@ -31,9 +30,8 @@ class YouTubePlayerTracker : AbstractYouTubePlayerListener() {
         currentSecond = second
     }
 
-    override fun onVideoDuration(youTubePlayer: YouTubePlayer, duration: Float,  qualityOptions: String) {
+    override fun onVideoDuration(youTubePlayer: YouTubePlayer, duration: Float) {
         videoDuration = duration
-        videoQualities = qualityOptions
     }
 
     override fun onVideoId(youTubePlayer: YouTubePlayer, videoId: String) {
