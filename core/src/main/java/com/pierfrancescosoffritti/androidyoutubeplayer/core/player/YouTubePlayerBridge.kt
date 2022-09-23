@@ -11,7 +11,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.You
 
 
 /**
- * Bridge used for Javascript-Java communication.
+ * Bridge used for Javascript-Java communication.sss
  * Videonun bilgilerini, kaçıncı dakikada olduğunu vs player bu yolla bildirir ki seekbar kısmı da buna göre değişsin ve çalışşsın.
  */
 @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
