@@ -31,16 +31,13 @@ class YouTubePlayerTracker : AbstractYouTubePlayerListener() {
         currentSecond = second
     }
 
-    override fun onVideoDuration(youTubePlayer: YouTubePlayer, duration: Float) {
+    override fun onVideoDuration(youTubePlayer: YouTubePlayer, duration: Float,  qualityOptions: String) {
         videoDuration = duration
+        videoQualities = qualityOptions
     }
 
     override fun onVideoId(youTubePlayer: YouTubePlayer, videoId: String) {
         this.videoId = videoId
-    }
-    
-    override fun onVideoQualities(youTubePlayer: YouTubePlayer, qualityOptions: String) { 
-        videoQualities = qualityOptions
     }
    
 }
