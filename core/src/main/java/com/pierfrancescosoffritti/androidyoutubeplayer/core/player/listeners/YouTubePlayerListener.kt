@@ -45,7 +45,7 @@ interface YouTubePlayerListener {
      * Note that getDuration() will return 0 until the video's metadata is loaded, which normally happens just after the video starts playing.
      * @param duration total duration of the video
      */
-    fun onVideoDuration(youTubePlayer: YouTubePlayer, duration: String)
+    fun onVideoDuration(youTubePlayer: YouTubePlayer, duration: Float)
 
     /**
      * Called periodically by the player, the argument is the percentage of the video that has been buffered.
