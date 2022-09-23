@@ -96,8 +96,7 @@
                 var videoDuration = player.getDuration();
                 var qualityOptions = JSON.stringify(player.getAvailableQualityLevels());
                 
-                YouTubePlayerBridge.sendVideoDuration(videoDuration);
-                YouTubePlayerBridge.sendVideoAvailableQualities(qualityOptions);
+                YouTubePlayerBridge.sendVideoDuration(qualityOptions);
             }
 
             function sendStateChange(newState) {
