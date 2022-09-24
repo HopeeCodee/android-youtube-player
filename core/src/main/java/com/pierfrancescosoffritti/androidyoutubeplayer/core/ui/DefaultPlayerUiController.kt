@@ -13,7 +13,6 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.R
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerFullScreenListener
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerQualityListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.LegacyYouTubePlayerView
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.menu.YouTubePlayerMenu
@@ -23,7 +22,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.views.YouTubePlay
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.views.YouTubePlayerSeekBarListener
 import androidx.core.content.ContextCompat
 
-internal class DefaultPlayerUiController(private val youTubePlayerView: LegacyYouTubePlayerView, private val youTubePlayer: YouTubePlayer) : PlayerUiController, YouTubePlayerListener, YouTubePlayerQualityListener, YouTubePlayerFullScreenListener, YouTubePlayerSeekBarListener {
+internal class DefaultPlayerUiController(private val youTubePlayerView: LegacyYouTubePlayerView, private val youTubePlayer: YouTubePlayer) : PlayerUiController, YouTubePlayerListener, YouTubePlayerFullScreenListener, YouTubePlayerSeekBarListener {
 
     private var youTubePlayerMenu: YouTubePlayerMenu
 
@@ -226,12 +225,6 @@ internal class DefaultPlayerUiController(private val youTubePlayerView: LegacyYo
         fullScreenButton.setImageResource(R.drawable.ayp_ic_fullscreen_exit_24dp)
 
     override fun onYouTubePlayerExitFullScreen() =
-        fullScreenButton.setImageResource(R.drawable.ayp_ic_fullscreen_24dp)
-        
-    override fun onYouTubePlayerChangeQuality(quality: String) =
-        fullScreenButton.setImageResource(R.drawable.ayp_ic_fullscreen_exit_24dp)
-
-    override fun onYouTubePlayerAutomateQuality() =
         fullScreenButton.setImageResource(R.drawable.ayp_ic_fullscreen_24dp)
 
     private fun updateState(state: PlayerConstants.PlayerState) {
