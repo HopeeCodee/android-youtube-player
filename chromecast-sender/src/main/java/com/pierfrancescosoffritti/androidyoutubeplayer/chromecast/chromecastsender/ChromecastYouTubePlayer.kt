@@ -80,8 +80,8 @@ class ChromecastYouTubePlayer internal constructor(private val chromecastCommuni
         return
     }
     
-    override fun getAvailableQualities() {
-        return
+    override fun getAvailableQualities():String {
+        return "."
     }
 
     override fun seekTo(time: Float) {
