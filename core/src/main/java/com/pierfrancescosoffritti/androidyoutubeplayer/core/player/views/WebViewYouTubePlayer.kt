@@ -69,6 +69,10 @@ internal class WebViewYouTubePlayer constructor(context: Context, attrs: Attribu
     override fun setQuality(playbackQuality: String) {
         mainThreadHandler.post { loadUrl("javascript:setPlaybackQuality('$playbackQuality')") }
     }
+    
+    override fun getAvailableQualities() {
+        mainThreadHandler.post { loadUrl("javascript:getAvailableQualities()") }
+    }
 
     override fun seekTo(time: Float) {
         mainThreadHandler.post { loadUrl("javascript:seekTo($time)") }
