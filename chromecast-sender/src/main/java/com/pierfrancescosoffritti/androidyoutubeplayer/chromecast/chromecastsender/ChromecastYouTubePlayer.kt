@@ -79,10 +79,6 @@ class ChromecastYouTubePlayer internal constructor(private val chromecastCommuni
     override fun setQuality(playbackQuality: String) {
         return
     }
-    
-    override fun getAvailableQualities():String {
-        return "."
-    }
 
     override fun seekTo(time: Float) {
         val message = JSONUtils.buildFlatJson(
