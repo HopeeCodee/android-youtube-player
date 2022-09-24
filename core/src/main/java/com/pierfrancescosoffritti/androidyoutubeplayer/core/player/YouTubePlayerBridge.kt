@@ -48,7 +48,7 @@ class YouTubePlayerBridge(private val youTubePlayerOwner: YouTubePlayerBridgeCal
     }
 
     private val mainThreadHandler: Handler = Handler(Looper.getMainLooper())
-    private val qualityOptions: String
+    private var qualityOptions: String = "null"
 
     interface YouTubePlayerBridgeCallbacks {
         fun getInstance(): YouTubePlayer
