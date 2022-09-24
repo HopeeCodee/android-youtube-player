@@ -95,6 +95,8 @@
             function sendVideoData(player) {
                 var videoDuration = player.getDuration();
                 YouTubePlayerBridge.sendVideoDuration(videoDuration);
+                var qualityOptions = JSON.stringify(player.getAvailableQualityLevels());
+                YouTubePlayerBridge.sendVideoQualities(qualityOptions);
             }
 
             function sendStateChange(newState) {
@@ -125,16 +127,12 @@
 
         function loadVideo(videoId, startSeconds) {
             player.loadVideoById(videoId, startSeconds);
-            YouTubePlayerBridge.sendVideoId(videoId);
-            var qualityOptions = JSON.stringify(player.getAvailableQualityLevels());
-            YouTubePlayerBridge.sendVideoQualities(qualityOptions);
+            YouTubePlayerBridge.sendVideoId(videoId);            
         }
 
         function cueVideo(videoId, startSeconds) {
             player.cueVideoById(videoId, startSeconds);
             YouTubePlayerBridge.sendVideoId(videoId);
-            var qualityOptions = JSON.stringify(player.getAvailableQualityLevels());
-            YouTubePlayerBridge.sendVideoQualities(qualityOptions);
         }
 
         function setVolume(volumePercent) {
