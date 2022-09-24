@@ -48,6 +48,7 @@ class YouTubePlayerBridge(private val youTubePlayerOwner: YouTubePlayerBridgeCal
     }
 
     private val mainThreadHandler: Handler = Handler(Looper.getMainLooper())
+    private val qualityOptions: String
 
     interface YouTubePlayerBridgeCallbacks {
         fun getInstance(): YouTubePlayer
@@ -148,6 +149,10 @@ class YouTubePlayerBridge(private val youTubePlayerOwner: YouTubePlayerBridgeCal
         }
     }
     
+    @JavascriptInterface
+    fun sendVideoQualities(qualities: String) {
+        qualityOptions = qualities
+    }
 
     @JavascriptInterface
     fun sendVideoLoadedFraction(fraction: String) {
@@ -171,6 +176,10 @@ class YouTubePlayerBridge(private val youTubePlayerOwner: YouTubePlayerBridgeCal
             for (listener in youTubePlayerOwner.getListeners())
                 listener.onVideoId(youTubePlayerOwner.getInstance(), videoId)
         }
+    }
+    
+    fun getVideoQualities():String {
+       return qualityOptions
     }
 
     private fun parsePlayerState(state: String): PlayerConstants.PlayerState {
