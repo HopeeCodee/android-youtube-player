@@ -93,7 +93,7 @@ internal class WebViewYouTubePlayer constructor(context: Context, attrs: Attribu
         return youTubePlayerListeners.remove(listener)
     }
     
-    fun getAvailableQualities(): String {
+    override fun getAvailableQualities(): String {
         return youtubePlayerBridge.getVideoQualities()
     }
 
