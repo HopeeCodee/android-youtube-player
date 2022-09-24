@@ -31,7 +31,7 @@ internal class WebViewYouTubePlayer constructor(context: Context, attrs: Attribu
 
     private val youTubePlayerListeners = HashSet<YouTubePlayerListener>()
     private val mainThreadHandler: Handler = Handler(Looper.getMainLooper())
-    private var youtubePlayerBridge: YoutubePlayerBridge = YoutubePlayerBridge(this)
+    private val youtubePlayerBridge: YouTubePlayerBridge = YouTubePlayerBridge(this)
 
     internal var isBackgroundPlaybackEnabled = false
 
@@ -93,7 +93,7 @@ internal class WebViewYouTubePlayer constructor(context: Context, attrs: Attribu
         return youTubePlayerListeners.remove(listener)
     }
     
-    fun getAvailableQualities() {
+    fun getAvailableQualities(): String {
         return youtubePlayerBridge.getVideoQualities()
     }
 
