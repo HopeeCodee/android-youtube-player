@@ -29,6 +29,8 @@ interface YouTubePlayer {
     fun setVolume(volumePercent: Int)
     
     fun setQuality(playbackQuality: String)
+    
+    fun getAvailableQualities(): String
         
     /**
      *
