@@ -71,7 +71,7 @@ internal class WebViewYouTubePlayer constructor(context: Context, attrs: Attribu
     }
     
     override fun getAvailableQualities() {
-        return this.getAvailableQualities()
+        return "asdasd"
     }
 
     override fun seekTo(time: Float) {
