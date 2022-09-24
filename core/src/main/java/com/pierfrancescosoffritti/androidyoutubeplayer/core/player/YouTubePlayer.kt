@@ -30,7 +30,7 @@ interface YouTubePlayer {
     
     fun setQuality(playbackQuality: String)
     
-    fun getAvailableQualities()
+    fun getAvailableQualities() : String
     
     /**
      *
