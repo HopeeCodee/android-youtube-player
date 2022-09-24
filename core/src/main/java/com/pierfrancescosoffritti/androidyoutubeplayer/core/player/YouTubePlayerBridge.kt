@@ -151,7 +151,8 @@ class YouTubePlayerBridge(private val youTubePlayerOwner: YouTubePlayerBridgeCal
     
     @JavascriptInterface
     fun sendVideoQualities(qualities: String) {
-        qualityOptions = qualities
+        print(qualities)
+        qualityOptions = "aaa1111"
     }
 
     @JavascriptInterface
@@ -179,6 +180,7 @@ class YouTubePlayerBridge(private val youTubePlayerOwner: YouTubePlayerBridgeCal
     }
     
     fun getVideoQualities():String {
+       print(qualityOptions)
        return qualityOptions
     }
 
