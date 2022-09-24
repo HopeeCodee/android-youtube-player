@@ -295,7 +295,6 @@ internal class DefaultPlayerUiController(private val youTubePlayerView: LegacyYo
     override fun onPlaybackQualityChange(youTubePlayer: YouTubePlayer, playbackQuality: PlayerConstants.PlaybackQuality) {}
     override fun onPlaybackRateChange(youTubePlayer: YouTubePlayer, playbackRate: PlayerConstants.PlaybackRate) {}
     override fun onError(youTubePlayer: YouTubePlayer, error: PlayerConstants.PlayerError) {}
-    override fun onVideoQualities(youTubePlayer: YouTubePlayer) { }
     override fun onApiChange(youTubePlayer: YouTubePlayer) {}
     override fun onCurrentSecond(youTubePlayer: YouTubePlayer, second: Float) {}
     override fun onVideoDuration(youTubePlayer: YouTubePlayer, duration: Float) {}
