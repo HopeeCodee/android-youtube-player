@@ -15,12 +15,10 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.R
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerFullScreenListener
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerQualityListener       /** **/
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerCallback
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.FullScreenHelper
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.QualityHelper                          /** **/
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.PlaybackResumer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.DefaultPlayerUiController
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.PlayerUiController
@@ -38,7 +36,6 @@ internal class LegacyYouTubePlayerView(context: Context, attrs: AttributeSet? = 
     private val networkListener = NetworkListener()
     private val playbackResumer = PlaybackResumer()
     private val fullScreenHelper = FullScreenHelper(this)
-    private val qualityHelper = QualityHelper()
 
     internal var isYouTubePlayerReady = false
     private var initialize = { }
@@ -55,7 +52,6 @@ internal class LegacyYouTubePlayerView(context: Context, attrs: AttributeSet? = 
         defaultPlayerUiController = DefaultPlayerUiController(this, youTubePlayer)
 
         fullScreenHelper.addFullScreenListener(defaultPlayerUiController)
-        qualityHelper.addQualityListener(defaultPlayerUiController)
 
         youTubePlayer.addListener(defaultPlayerUiController)
         youTubePlayer.addListener(playbackResumer)
@@ -207,12 +203,6 @@ internal class LegacyYouTubePlayerView(context: Context, attrs: AttributeSet? = 
     fun enterFullScreen() = fullScreenHelper.enterFullScreen()
 
     fun exitFullScreen() = fullScreenHelper.exitFullScreen()
-    
-    fun changeQuality(quality: String){
-        youTubePlayer.setQuality(quality)
-    } 
-
-    fun automateQuality() = qualityHelper.automateQuality()
 
     fun toggleFullScreen() = fullScreenHelper.toggleFullScreen()
 
@@ -223,7 +213,5 @@ internal class LegacyYouTubePlayerView(context: Context, attrs: AttributeSet? = 
 
     fun removeFullScreenListener(fullScreenListener: YouTubePlayerFullScreenListener): Boolean =
             fullScreenHelper.removeFullScreenListener(fullScreenListener)
-            
-    fun addQualityListener(qualityListener: YouTubePlayerQualityListener): Boolean =
-            qualityHelper.addQualityListener(qualityListener)        
+                   
 }
