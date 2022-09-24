@@ -13,12 +13,10 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.R
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerCallback
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerQualityListener       /** **/
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerFullScreenListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.FullScreenHelper
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.QualityHelper                          /** **/
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.PlayerUiController
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.loadOrCueVideo
 
@@ -31,7 +29,6 @@ class YouTubePlayerView(context: Context, attrs: AttributeSet? = null, defStyleA
 
     private val legacyTubePlayerView: LegacyYouTubePlayerView = LegacyYouTubePlayerView(context)
     private val fullScreenHelper = FullScreenHelper(this)
-    private val qualityHelper = QualityHelper()
 
     var enableAutomaticInitialization: Boolean
 
@@ -100,15 +97,6 @@ class YouTubePlayerView(context: Context, attrs: AttributeSet? = null, defStyleA
             }
         })
         
-        legacyTubePlayerView.addQualityListener(object : YouTubePlayerQualityListener {
-            override fun onYouTubePlayerChangeQuality(quality: String) {
-                qualityHelper.changeQuality(quality)
-            }
-
-            override fun onYouTubePlayerAutomateQuality() {
-                qualityHelper.automateQuality()
-            }
-        })
     }
 
     /**
@@ -203,10 +191,6 @@ class YouTubePlayerView(context: Context, attrs: AttributeSet? = null, defStyleA
     fun enterFullScreen() = legacyTubePlayerView.enterFullScreen()
 
     fun exitFullScreen() = legacyTubePlayerView.exitFullScreen()
-    
-    fun changeQuality(quality: String) = qualityHelper.changeQuality(quality)
-
-    fun automateQuality() = qualityHelper.automateQuality()
 
     fun toggleFullScreen() = legacyTubePlayerView.toggleFullScreen()
 
@@ -218,6 +202,4 @@ class YouTubePlayerView(context: Context, attrs: AttributeSet? = null, defStyleA
     fun removeFullScreenListener(fullScreenListener: YouTubePlayerFullScreenListener): Boolean =
             fullScreenHelper.removeFullScreenListener(fullScreenListener)
             
-    fun addQualityListener(qualityListener: YouTubePlayerQualityListener): Boolean =
-            qualityHelper.addQualityListener(qualityListener)   
 }
