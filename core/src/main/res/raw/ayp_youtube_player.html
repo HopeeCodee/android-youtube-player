@@ -94,7 +94,9 @@
 
             function sendVideoData(player) {
                 var videoDuration = player.getDuration();
-                
+                var qualityOptions = JSON.stringify(player.getAvailableQualityLevels());
+
+                YouTubePlayerBridge.sendVideoQualities(qualityOptions);
                 YouTubePlayerBridge.sendVideoDuration(videoDuration);
             }
 
@@ -140,11 +142,6 @@
             
         function setQuality(playbackQuality) {
             setPlaybackQuality(playbackQuality);
-        }
-            
-        function getAvailableQualities() {
-            var qualityOptions = JSON.stringify(player.getAvailableQualityLevels());
-            return qualityOptions;
         }
             
         function setPlaybackQuality(playbackQuality) {
