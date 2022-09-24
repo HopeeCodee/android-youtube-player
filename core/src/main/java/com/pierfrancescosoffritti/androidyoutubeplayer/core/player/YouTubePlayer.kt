@@ -30,6 +30,8 @@ interface YouTubePlayer {
     
     fun setQuality(playbackQuality: String)
     
+    fun getAvailableQualities()
+    
     /**
      *
      * @param time The absolute time in seconds to seek to
