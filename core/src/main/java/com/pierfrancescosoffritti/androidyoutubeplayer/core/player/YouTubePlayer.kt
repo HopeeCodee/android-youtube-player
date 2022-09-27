@@ -27,7 +27,11 @@ interface YouTubePlayer {
      * @param volumePercent Integer between 0 and 100
      */
     fun setVolume(volumePercent: Int)
-
+    
+    fun setQuality(playbackQuality: String)
+    
+    fun getAvailableQualities(): String
+        
     /**
      *
      * @param time The absolute time in seconds to seek to

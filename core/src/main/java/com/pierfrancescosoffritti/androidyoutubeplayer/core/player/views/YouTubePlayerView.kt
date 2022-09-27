@@ -96,6 +96,7 @@ class YouTubePlayerView(context: Context, attrs: AttributeSet? = null, defStyleA
                 fullScreenHelper.exitFullScreen()
             }
         })
+        
     }
 
     /**
@@ -200,4 +201,5 @@ class YouTubePlayerView(context: Context, attrs: AttributeSet? = null, defStyleA
 
     fun removeFullScreenListener(fullScreenListener: YouTubePlayerFullScreenListener): Boolean =
             fullScreenHelper.removeFullScreenListener(fullScreenListener)
+            
 }

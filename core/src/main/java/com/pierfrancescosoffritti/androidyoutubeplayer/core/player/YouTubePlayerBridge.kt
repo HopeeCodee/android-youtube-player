@@ -11,7 +11,8 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.You
 
 
 /**
- * Bridge used for Javascript-Java communication.
+ * Bridge used for Javascript-Java communication.sss
+ * Videonun bilgilerini, kaçıncı dakikada olduğunu vs player bu yolla bildirir ki seekbar kısmı da buna göre değişsin ve çalışşsın.
  */
 @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
 class YouTubePlayerBridge(private val youTubePlayerOwner: YouTubePlayerBridgeCallbacks) {
@@ -47,6 +48,7 @@ class YouTubePlayerBridge(private val youTubePlayerOwner: YouTubePlayerBridgeCal
     }
 
     private val mainThreadHandler: Handler = Handler(Looper.getMainLooper())
+    private var qualityOptions: String = "null"
 
     interface YouTubePlayerBridgeCallbacks {
         fun getInstance(): YouTubePlayer
@@ -146,6 +148,11 @@ class YouTubePlayerBridge(private val youTubePlayerOwner: YouTubePlayerBridgeCal
                 listener.onVideoDuration(youTubePlayerOwner.getInstance(), videoDuration)
         }
     }
+    
+    @JavascriptInterface
+    fun sendVideoQualities(qualities: String) {
+        qualityOptions = qualities
+    }
 
     @JavascriptInterface
     fun sendVideoLoadedFraction(fraction: String) {
@@ -169,6 +176,10 @@ class YouTubePlayerBridge(private val youTubePlayerOwner: YouTubePlayerBridgeCal
             for (listener in youTubePlayerOwner.getListeners())
                 listener.onVideoId(youTubePlayerOwner.getInstance(), videoId)
         }
+    }
+    
+    fun getVideoQualities():String {
+       return qualityOptions
     }
 
     private fun parsePlayerState(state: String): PlayerConstants.PlayerState {

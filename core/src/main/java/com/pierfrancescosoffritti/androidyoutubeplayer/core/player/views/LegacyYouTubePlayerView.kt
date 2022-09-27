@@ -30,7 +30,7 @@ internal class LegacyYouTubePlayerView(context: Context, attrs: AttributeSet? = 
     constructor(context: Context): this(context, null, 0)
     constructor(context: Context, attrs: AttributeSet? = null): this(context, attrs, 0)
 
-    internal val youTubePlayer: WebViewYouTubePlayer = WebViewYouTubePlayer(context)
+    val youTubePlayer: WebViewYouTubePlayer = WebViewYouTubePlayer(context)
     private val defaultPlayerUiController: DefaultPlayerUiController
 
     private val networkListener = NetworkListener()
@@ -213,4 +213,5 @@ internal class LegacyYouTubePlayerView(context: Context, attrs: AttributeSet? = 
 
     fun removeFullScreenListener(fullScreenListener: YouTubePlayerFullScreenListener): Boolean =
             fullScreenHelper.removeFullScreenListener(fullScreenListener)
+                   
 }

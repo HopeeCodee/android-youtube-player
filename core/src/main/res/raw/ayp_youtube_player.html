@@ -16,7 +16,7 @@
 
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <script src="https://www.youtube.com/iframe_api"></script>
+        <script defer src="https://www.youtube.com/iframe_api"></script>
     </head>
 
     <body>
@@ -94,8 +94,9 @@
 
             function sendVideoData(player) {
                 var videoDuration = player.getDuration();
-
                 YouTubePlayerBridge.sendVideoDuration(videoDuration);
+                var qualityOptions = JSON.stringify(player.getAvailableQualityLevels());
+                YouTubePlayerBridge.sendVideoQualities(qualityOptions);
             }
 
             function sendStateChange(newState) {
@@ -117,16 +118,16 @@
         }
 
         function pauseVideo() {
-        	player.pauseVideo();
+            player.pauseVideo();
         }
 
         function playVideo() {
-        	player.playVideo();
+            player.playVideo();
         }
 
         function loadVideo(videoId, startSeconds) {
             player.loadVideoById(videoId, startSeconds);
-            YouTubePlayerBridge.sendVideoId(videoId);
+            YouTubePlayerBridge.sendVideoId(videoId);            
         }
 
         function cueVideo(videoId, startSeconds) {
@@ -136,6 +137,31 @@
 
         function setVolume(volumePercent) {
             player.setVolume(volumePercent);
+        }
+            
+        function setQuality(playbackQuality) {
+            setPlaybackQuality(playbackQuality);
+        }
+            
+        function setPlaybackQuality(playbackQuality) {
+            if (playbackQuality == "auto") {
+                //this will make quality auto
+                localStorage.removeItem("yt-player-quality");
+            } else {
+                var now = Date.now();
+                //this will set quality of your choice and it will be saved and be default for every video until expires:)
+                window.localStorage.setItem("yt-player-quality", JSON.stringify({
+                    data: playbackQuality,
+                    creation: now,
+                    expiration: now + 2592000000
+                }));
+            }
+            //after you set value you have to reload the player to see the effect.
+            //so this method reloads the video where you left it so it is kinda seemless
+            if (player) {
+                var currentTime = player.getCurrentTime();
+                player.loadVideoById(player.getVideoData().video_id, currentTime, playbackQuality);
+            }
         }
 
     </script>

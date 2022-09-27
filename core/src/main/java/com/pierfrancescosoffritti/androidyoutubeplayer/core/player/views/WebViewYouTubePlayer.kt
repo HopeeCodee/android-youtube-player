@@ -31,6 +31,7 @@ internal class WebViewYouTubePlayer constructor(context: Context, attrs: Attribu
 
     private val youTubePlayerListeners = HashSet<YouTubePlayerListener>()
     private val mainThreadHandler: Handler = Handler(Looper.getMainLooper())
+    private val youtubePlayerBridge: YouTubePlayerBridge = YouTubePlayerBridge(this)
 
     internal var isBackgroundPlaybackEnabled = false
 
@@ -65,6 +66,10 @@ internal class WebViewYouTubePlayer constructor(context: Context, attrs: Attribu
 
         mainThreadHandler.post { loadUrl("javascript:setVolume($volumePercent)") }
     }
+    
+    override fun setQuality(playbackQuality: String) {
+        mainThreadHandler.post { loadUrl("javascript:setPlaybackQuality('$playbackQuality')") }
+    }
 
     override fun seekTo(time: Float) {
         mainThreadHandler.post { loadUrl("javascript:seekTo($time)") }
@@ -87,14 +92,19 @@ internal class WebViewYouTubePlayer constructor(context: Context, attrs: Attribu
     override fun removeListener(listener: YouTubePlayerListener): Boolean {
         return youTubePlayerListeners.remove(listener)
     }
+    
+    override fun getAvailableQualities(): String {
+        return youtubePlayerBridge.getVideoQualities()
+    }
 
     @SuppressLint("SetJavaScriptEnabled")
     private fun initWebView(playerOptions: IFramePlayerOptions) {
         settings.javaScriptEnabled = true
         settings.mediaPlaybackRequiresUserGesture = false
-        settings.cacheMode = WebSettings.LOAD_NO_CACHE
+        settings.cacheMode = WebSettings.LOAD_DEFAULT
+        settings.domStorageEnabled = true
 
-        addJavascriptInterface(YouTubePlayerBridge(this), "YouTubePlayerBridge")
+        addJavascriptInterface(youtubePlayerBridge, "YouTubePlayerBridge")
 
         val htmlPage = Utils
                 .readHTMLFromUTF8File(resources.openRawResource(R.raw.ayp_youtube_player))
