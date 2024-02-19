@@ -84,6 +84,18 @@ class ChromecastYouTubePlayer internal constructor(private val chromecastCommuni
         return ""
     }
 
+    override fun hideVideoTitle(){
+        
+    }
+
+    override fun hideTabletPopup(){
+        
+    }
+
+    override fun hideCaption(){
+        
+    }
+
     override fun seekTo(time: Float) {
         val message = JSONUtils.buildFlatJson(
                 "command" to ChromecastCommunicationConstants.SEEK_TO,
