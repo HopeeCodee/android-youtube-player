@@ -71,6 +71,18 @@ internal class WebViewYouTubePlayer constructor(context: Context, attrs: Attribu
         mainThreadHandler.post { loadUrl("javascript:setPlaybackQuality('$playbackQuality')") }
     }
 
+    override fun hideVideoTitle(){
+        mainThreadHandler.post { loadUrl("javascript:hideVideoTitle()") }
+    }
+
+    override fun hideTabletPopup(){
+        mainThreadHandler.post { loadUrl("javascript:hideTabletPopup()") }
+    }
+
+    override fun hideCaption(){
+        mainThreadHandler.post { loadUrl("javascript:hideCaption()") }
+    }
+
     override fun seekTo(time: Float) {
         mainThreadHandler.post { loadUrl("javascript:seekTo($time)") }
     }
