@@ -142,8 +142,8 @@
         // Return the available quality options for the current video.
         // Not all videos have the same quality options, so we need to check what's available first. 
         // this function will return an array like: ["hd1080","hd720","large","medium","small","tiny","auto"]
-        function sendVideoQuality(player) {
-            YouTubePlayerBridge.sendVideoQuality(JSON.stringify(player.getAvailableQualityLevels()))
+        function setQuality(playbackQuality) {
+            setPlaybackQuality(playbackQuality);
         }
         
         function setPlaybackQuality(playbackQuality) {
